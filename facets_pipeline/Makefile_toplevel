@@ -1,0 +1,8 @@
+### BASIC SETTINGS FOR PROJECT MAKEFILE ###
+REF = hg38
+
+# --- Sample IDs --- have to be in bam folder and named FILE_NORMAL.bam FILE_TUMOR.bam. Alternatively you can pass filenames as args when launching the facets_pipeline
+#NORMAL_BAM := FILE_NORMAL
+#TUMOR_BAM  := FILE_TUMOR
+
+include facets_pipeline/Makefile
