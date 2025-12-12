@@ -1,0 +1,23 @@
+### BASIC SETTINGS FOR PROJECT MAKEFILE ###
+### see usb-modules-v2/config.inc for full options ###
+### for options related reference genome and target panels, see files in usb-modules-v2/genome_inc
+
+# default reference:
+# possible values: b37, hg19_ionref, b37_hbv_hcv, hg38 etc
+REF ?= hg19_ionref
+
+# possible values: ILLUMINA, IONTORRENT
+SEQ_PLATFORM ?= IONTORRENT
+
+# possible values: NONE, BAITS, PCR, RNA, CHIP
+CAPTURE_METHOD ?= PCR
+
+# possible values: NONE (include WGS, CHIP and RNA), AGILENT_CLINICAL_EXOME, CCP, CHPv2, AGILENT_ALLEXON_MOUSE, HCC,  WXS
+PANEL ?= CCPv3
+
+# possible values: SOMATIC,GERMLINE
+ANALYSIS_TYPE ?= SOMATIC
+
+
+include usb-modules-v2/Makefile
+
