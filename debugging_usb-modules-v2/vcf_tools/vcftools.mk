@@ -544,18 +544,6 @@ endef
 $(foreach pair,$(SAMPLE_PAIRS),$(eval $(call vcf2maf-tumor-normal,$(tumor.$(pair)),$(normal.$(pair)))))
 endif
 
-ifdef SAMPLE_PAIRS
-%/allTN.%.maf : $(foreach pair,$(SAMPLE_PAIRS),maf/$(pair).%.maf)
-	$(INIT) \
-	{ \
-	echo -e "TUMOR_NORMAL\t$(shell grep -v '^#' $< | sed -n 1p)"; \
-	for x in $^; do \
-		pair=$$(basename $$x | cut -d. -f1); \
-		grep -v '^#' $$x | sed 1d | awk -v p=$$pair '{print p "\t" $$0}'; \
-	done; \
-	} > $@
-endif
-
 #define vcf2maf-sample
 #maf/$1.%.maf : vcf/$1.%.vcf
 #	$$(call LSCRIPT_MEM,9G,12G,"$$(VCF2MAF) --input-vcf $$< --tumor-id $1 --ref-fasta $$(REF_FASTA) --vep-path $$(VEP_PATH) --vep-data $$(VEP_DATA) --output-maf $$@")

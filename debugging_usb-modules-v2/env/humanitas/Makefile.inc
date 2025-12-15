@@ -15,7 +15,7 @@ CONDA_DIR ?= $(USR_DIR)/conda
 SV_PON_DIR ?= $(GROUP_DIR)/ref/PoN/hg38/wgs/PDAC_AMPAC/gridss/pondir/
 HOTSPOTS_DIR ?= $(USR_DIR)/local/cancer_hotspots
 NICE ?= 1000
-ONCOKB_TOKEN = 2acb7953-59fb-4110-b0fb-e730d9382d78
+ONCOKB_TOKEN = 3c10d6d3-958c-4db4-9109-9d2384fdd604
 # export PATH := $(USR_DIR):$(PATH)
 # export LD_LIBRARY_PATH := $(LD_LIBRARY_PATH)
 
