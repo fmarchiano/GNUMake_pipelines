@@ -336,6 +336,10 @@ TARGETS += gridss_pon
 gridss_pon :
 	$(call RUN_MAKE,usb-modules-v2/sv_callers/gridss_pon.mk)
 
+TARGETS += conSV
+conSV :
+	$(call RUN_MAKE,usb-modules-v2/sv_callers/conSV.mk)
+
 #########################################################
 ## The set of targets below have NOT been tested,
 ## or are known to be broken/obsolete.
