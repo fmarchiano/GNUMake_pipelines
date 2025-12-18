@@ -11,8 +11,7 @@ PHONY += svaba
 .SECONDARY:
 .PHONY: $(PHONY)
 
-svaba : svaba_vcfs
-svaba_vcfs : $(foreach pair,$(SAMPLE_PAIRS),svaba/$(tumor.$(pair)).svaba.somatic.sv.vcf)
+svaba : $(foreach pair,$(SAMPLE_PAIRS),svaba/$(tumor.$(pair)).svaba.somatic.sv.SVpass.vcf)
 
 define svaba-tumor-normal
 svaba/$1.contigs.bam : bam/$1.bam bam/$2.bam
@@ -29,10 +28,12 @@ svaba/$1.contigs.bam : bam/$1.bam bam/$2.bam
 	$$(if $$(findstring b37,$$(REF)),$$(BED_DIR)/human.hg19.excl.bed,\
 	$$(if $$(findstring GRCm38,$$(REF)),$$(BED_DIR)/mouse.mm10.excl.bed,)))")
 
+
 endef
 $(foreach pair,$(SAMPLE_PAIRS),$(eval $(call svaba-tumor-normal,$(tumor.$(pair)),$(normal.$(pair)))))
 
-%.svaba.somatic.sv.vcf : %.contigs.bam
-	
+svaba/%.svaba.somatic.sv.vcf : svaba/%.contigs.bam
+
+svaba/%.svaba.somatic.sv.SVpass.vcf : svaba/%.svaba.somatic.sv.vcf
 
 include usb-modules-v2/vcf_tools/vcftools.mk
